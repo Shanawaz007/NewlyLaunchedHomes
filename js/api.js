@@ -1,38 +1,38 @@
 // create base url for dynmic call for post and get data api url 
 
-// let baseUrl = window.location.href.includes("file") || window.location.href.includes("localhost") ? "https://api.homesfy.in/" : "https://api.homesfy.in/"
+let baseUrl = window.location.href.includes("file") || window.location.href.includes("localhost") ? "https://api.homesfy.in/" : "https://api.homesfy.in/"
 
 // console.log(baseUrl)
 
 // Get Data
 
-// let getProjectData = async (project_id) => {
-//     if (project_id) {
-//         const api_url = "https://api.homesfy.in/api/leads/projectdata/" + project_id;
-//         // console.log(api_url)
-//         return await $.get(api_url)
-//         // return api_url;
-//     } else {
-//         return "Error : Project id not provided ";
-//     }
-// }
+let getProjectData = async (project_id) => {
+    if (project_id) {
+        const api_url = "https://api.homesfy.in/api/leads/projectdata/" + project_id;
+        // console.log(api_url)
+        return await $.get(api_url)
+        // return api_url;
+    } else {
+        return "Error : Project id not provided ";
+    }
+}
 
 // Post data
 
-// var SendLead = async (obj, msg, redirectUrl) => {
-//     const apiUrl = "api/leads/create";
-//     $.post(baseUrl + apiUrl, obj, function (data) {
-//         // if (!msg) {
-//         //     msg = "Thank You";
-//         // }
-//         if (!redirectUrl) {
-//             redirectUrl = "thankyou.html";
-//         }
-//         // alert(msg);
-//         window.location.href = redirectUrl;
-//         return 1
-//     })
-// }
+var SendLead = async (obj, msg, redirectUrl) => {
+    const apiUrl = "api/leads/create";
+    $.post(baseUrl + apiUrl, obj, function (data) {
+        // if (!msg) {
+        //     msg = "Thank You";
+        // }
+        if (!redirectUrl) {
+            redirectUrl = "thankyou.html";
+        }
+        // alert(msg);
+        window.location.href = redirectUrl;
+        return 1
+    })
+}
 
 //Get Static data function
 

@@ -296,10 +296,10 @@ let apiDataGet = async () => {
 
         })
         .catch((error) => {
-            var whatsapp_url = "https://api.whatsapp.com/send?phone=917304412403&text=Hi!"
+            var whatsapp_url = "https://api.whatsapp.com/send?phone=918286984597&text=Hi!"
             $(".whatsapp_url").attr("href", whatsapp_url);
-            $(".phone_url").attr("href", "tel:" + 917304927701 + "");
-            $(".phone_no").html("917304927701")
+            $(".phone_url").attr("href", "tel:" + 918286984597 + "");
+            $(".phone_no").html("918286984597")
         });
 }
 apiDataGet();
@@ -389,43 +389,43 @@ $('#PopUpForm').on("submit", function () {
     return !1
 })
 
-// async function saveLead(name, email, country_code, number, pref) {
-//     var getUtmData = queryForm();
-//     var ipAddress = await getIpAddress();
-//     var user_device = deviceData();
-//     var user_browser = browserData();
+async function saveLead(name, email, country_code, number, pref) {
+    var getUtmData = queryForm();
+    var ipAddress = await getIpAddress();
+    var user_device = deviceData();
+    var user_browser = browserData();
 
-//     var obj = {};
-//     obj.name = name;
-//     obj.email = email;
-//     obj.country_code = country_code;
-//     obj.number = number;
-//     // obj.is_tc_agree = parseInt(checkbox);
-//     // obj.admin_message= message; 
-//     obj.nationality = param_nationality; // 1 for indian & 2 for NRI (int)
-//     // obj.is_magnet = 1 ; // 1 for yes and 0 for no (int),
-//     // magnet_id =39603; //if magnet else blank (int)
-//     obj.source_id = 31;
-//     obj.project_id = projectId;
-//     if (getUtmData) {
-//         obj.Utm = {
-//             utm_medium: getUtmData.utmmedium,
-//             utm_source: getUtmData.utmsource,
-//             utm_content: getUtmData.utmcontent,
-//             utm_term: getUtmData.utmterm
-//         };
-//     }
-//     obj.Digital = {
-//         user_device: user_device,
-//         user_browser: user_browser,
-//         campaing_type: getUtmData ? getUtmData.utmcampaign : null,
-//         launch_name: "",
-//         client_ipaddress: ipAddress,
-//         client_pref: pref
-//     }
-//     if (pref == 'DownloadBrochure_overview_homepage') {
-//         SendLead(obj, "thankyou.html");
-//     } else {
-//         SendLead(obj, "thankyou.html");
-//     }
-// }
+    var obj = {};
+    obj.name = name;
+    obj.email = email;
+    obj.country_code = country_code;
+    obj.number = number;
+    // obj.is_tc_agree = parseInt(checkbox);
+    // obj.admin_message= message; 
+    obj.nationality = param_nationality; // 1 for indian & 2 for NRI (int)
+    // obj.is_magnet = 1 ; // 1 for yes and 0 for no (int),
+    // magnet_id =39603; //if magnet else blank (int)
+    obj.source_id = 31;
+    obj.project_id = projectId;
+    if (getUtmData) {
+        obj.Utm = {
+            utm_medium: getUtmData.utmmedium,
+            utm_source: getUtmData.utmsource,
+            utm_content: getUtmData.utmcontent,
+            utm_term: getUtmData.utmterm
+        };
+    }
+    obj.Digital = {
+        user_device: user_device,
+        user_browser: user_browser,
+        campaing_type: getUtmData ? getUtmData.utmcampaign : null,
+        launch_name: "",
+        client_ipaddress: ipAddress,
+        client_pref: pref
+    }
+    if (pref == 'DownloadBrochure_overview_homepage') {
+        SendLead(obj, "thankyou.html");
+    } else {
+        SendLead(obj, "thankyou.html");
+    }
+}
