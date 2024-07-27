@@ -1437,7 +1437,6 @@
 	<!-- The Modal popup -->
 
 	<script src="js/jquery-3.1.1.min.js"></script>
-	<script src="../fetchipaddress.html"></script>
 	<script src="js/api.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="js/bootstrap.js"></script>
@@ -1449,7 +1448,7 @@
 		});
 	</script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+       document.addEventListener("DOMContentLoaded", function() {
     const forms = ['form1', 'form2','form3'];
     const endpoint = 'https://api.homesfy.in/api/leads/leadcreation/webhook';
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIwNjMwLCJkb21haW5fbmFtZSI6IkRlc3Rpbm9fUHJvcGVydGllcyIsImVtYWlsIjoiaW5xdWlyeUBkZXN0aW5vcHJvcGVydGllcy5pbiIsImlhdCI6MTcxNTI1MzkxN30.s10ujea0qu-8ltw0HY9vRpRpWpCKovSFiVyFYRIHID4';
@@ -1462,19 +1461,21 @@
             
             const formData = new FormData(form);
             const data = {
-                country_code:"+91",
+                country_code: "+91",
                 email: formData.get('email'),
-                is_tc_agree:"1",
+                is_tc_agree: "1",
                 name: formData.get('name'),
-                nationality:"1",
+                nationality: "1",
                 number: formData.get('mobile'),
-                platform:"1",
-                is_magnet:"1",
-                magnet_id:"420630",
-                project_id:"1520",
-                source_id:"62"
+                platform: "1",
+                is_magnet: "1",
+                magnet_id: "420630",
+                project_id: "1520",
+                source_id: "62"
             };
-            
+
+            console.log('Submitting data:', data);
+
             fetch(endpoint, {
                 method: 'POST',
                 headers: {
@@ -1483,17 +1484,19 @@
                 },
                 body: JSON.stringify(data)
             })
-            .then(response => {
-                if (response.status === 201) {
+            .then(response => response.json().then(json => ({ status: response.status, body: json })))
+            .then(({ status, body }) => {
+                if (status === 201) {
                     window.location.href = 'thankyou.html';
-                } else if (response.status === 409) {
-                    alert('Lead already exists.');
+                } else if (status === 409) {
+                    alert('Data already exists.');
                 } else {
-                    return response.json().then(data => { throw new Error(data.message) });
+                    console.error('Error response:', body);
+                    alert(`Error: ${body.message || 'An error occurred'}`);
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Fetch error:', error);
                 alert('An error occurred. Please try again later.');
             });
         });
@@ -1522,15 +1525,7 @@
 
 		defClass(1, 0);
 
-		leftarr.addEventListener("click", function () {
-			currentIndex <= 0 ? currentIndex = imgs.length - 1 : currentIndex--;
-			defClass(0, currentIndex);
-		});
-
-		rightarr.addEventListener("click", function () {
-			currentIndex >= imgs.length - 1 ? currentIndex = 0 : currentIndex++;
-			defClass(0, currentIndex);
-		});
+		
 
 		const startAutoSlide = () => {
 			setInterval(() => {
