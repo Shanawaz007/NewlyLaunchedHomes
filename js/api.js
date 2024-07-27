@@ -8,7 +8,7 @@ let baseUrl = window.location.href.includes("file") || window.location.href.incl
 
 let getProjectData = async (project_id) => {
     if (project_id) {
-        const api_url = "https://api.homesfy.in/api/leads/projectdata/" + project_id;
+        const api_url = "https://api.homesfy.in/api/leads/leadcreation/webhook" + project_id;
         // console.log(api_url)
         return await $.get(api_url)
         // return api_url;

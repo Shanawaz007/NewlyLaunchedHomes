@@ -280,7 +280,7 @@ var projectId;
 var RegNo;
 var city;
 let apiDataGet = async () => {
-    let data = getProjectData(3031)       // Change Project_ID Integer Value only Ex:1131
+    let data = getProjectData(1520)       // Change Project_ID Integer Value only Ex:1131
         .then((data) => {
             projectId = data.result.Project.p_id;
             phone_no = data.result.phone;
